@@ -25,13 +25,40 @@ Requisitos:
 
     <form id="filtroForm">
         <input type="text" id="busqueda" placeholder="Ingresá una palabra o parte de ella">
-        <button type="submit">Filtrar</button>
+        <button type="button" onclick="filtro()">Filtrar</button>
     </form>
 
     <p id="error"></p>
 
     <ul id="lista">
     </ul>
+
+    <script>
+        const palabras = ["manzana", "banana", "pera", "durazno", "frutilla", "mango"]
+        const form = document.getElementById("filtroForm")
+        const input = document.getElementById("busqueda")
+        const lista = document.getElementById("lista")
+        const error = document.getElementById("error")
+
+        function mostrarpalabras(filtradas){
+            lista.innerHTML = ""
+            filtradas.forEach(palabras => {
+                const listItem = document.createElement("li");
+                listItem.textContent = palabras;
+                lista.appendChild(listItem);
+            });
+        }
+        mostrarpalabras(palabras)
+
+            function filtro(){
+                if(input.value === ""){
+                    alert("filtro vacio")
+                }else(
+                    mostrarpalabras(palabras.filter(palabra => palabra.includes(input.value.toLowerCase())))
+                )
+            }
+
+    </script>
         
 </body>
 </html>
