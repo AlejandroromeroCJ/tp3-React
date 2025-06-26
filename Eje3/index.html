@@ -1,0 +1,28 @@
+<!-- Realiza una petición GET a la API de JSONPlaceholder para obtener todos las "tareas" (/todos). 
+Luego, utiliza forEach y filter para quedarte solo con las tareas que han sido completadas 
+(completed: true) y mostrarlas en el HTML dentro de una lista <ul> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Lista de tareas</h2>
+
+    <ul id="lista">
+
+    </ul>
+
+    <script>
+        fetch("https://jsonplaceholder.typicode.com/todos")
+        .then(r => r.json())
+        .then(d => d.filter(t => t.completed).forEach(t => {
+            lista.innerHTML += `<li>${t.title}</li>`;
+        }
+    ));      
+    </script>
+</body>
+</html>
